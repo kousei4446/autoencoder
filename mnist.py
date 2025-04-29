@@ -89,7 +89,7 @@ model = Autoencoder().to(device)                # オートエンコーダーを
 criterion = nn.BCELoss()                        
 
 optimizer = optimizers.Adam(model.parameters())     # 最適化手法はAdam
-epochs = 1                                        # エポック数
+epochs = 10                                        # エポック数
 
 for epoch in range(epochs):
     train_loss = 0.
@@ -128,11 +128,11 @@ _x = _x.to(device)
 print(_x)
 print(_)
 
-model.eval() # ネットワークを評価モードにする
-x_rec = model(_x) # テストデータを入力して結果を取得
+model.eval()        # ネットワークを評価モードにする
+x_rec = model(_x)   # テストデータを入力して結果を取得
 
 # 入力画像、復元画像を表示
-titles = {0: 'Original', 1: 'Autoencoder:Epoch=1'}
+titles = {0: 'Original', 1: f'Autoencoder:Epoch={epoch}'}
 for i, image in enumerate([_x, x_rec]):
     image = image.view(28, 28).detach().cpu().numpy()
     plt.subplot(1, 2, i+1)
