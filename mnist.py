@@ -132,7 +132,7 @@ model.eval()        # ネットワークを評価モードにする
 x_rec = model(_x)   # テストデータを入力して結果を取得
 
 # 入力画像、復元画像を表示
-titles = {0: 'Original', 1: f'Autoencoder:Epoch={epoch}'}
+titles = {0: 'Original', 1: f'Autoencoder:Epoch={epochs}'}
 for i, image in enumerate([_x, x_rec]):
     image = image.view(28, 28).detach().cpu().numpy()
     plt.subplot(1, 2, i+1)
